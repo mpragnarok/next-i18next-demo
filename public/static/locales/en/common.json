@@ -1,1 +1,5 @@
-{ "description": "huhu" }
+{
+  "description": "huhu",
+  "error-with-status": "error with status",
+  "error-without-status": "error without status"
+}
