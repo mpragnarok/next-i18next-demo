@@ -1,6 +1,6 @@
 # NEXT-i18NEXT-DEMO
 
-This is a init set up project for next-i18next which implement with react.js and next.js.
+This is a init set up project for next-i18next which implement multi-languages setting with react.js and next.js.
 
 ## How to install and run
 
