@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 // This is our initialised `NextI18Next` instance
 import { withTranslation, i18n } from "../i18n";
 
-class Footer extends React.Component {
+class Homepage extends React.Component {
   static getInitialProps = async ({ req }) => {
     const currentLanguage = req ? req.language : i18n.language;
 
@@ -31,4 +31,4 @@ class Footer extends React.Component {
   }
 }
 
-export default withTranslation("common")(Footer);
+export default withTranslation("common")(Homepage);
