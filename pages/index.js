@@ -11,20 +11,59 @@ class Homepage extends React.Component {
   };
   constructor(props) {
     super(props);
+    this.state = {
+      browserLanguages: "en",
+      selectValue: "",
+      availableLanguages: [
+        { locale: "en", name: "English" },
+        { locale: "zh", name: "Chinese(Traditional)" },
+      ],
+    };
   }
   static propTypes = {
     t: PropTypes.func.isRequired,
   };
-  changeLocales = () => {
-    i18n.changeLanguage(i18n.language === "en" ? "tw" : "en");
+  changeLocales = (locale) => {
+    i18n.changeLanguage(locale);
+  };
+
+  convertLocaleCode = (code) => {
+    return code.slice(0, 2) ? code.slice(0, 2) : "en";
+  };
+
+  getBrowserLanguage = () => {
+    const userLanguage = navigator.language || navigator.userLanguage;
+    const userLocale = this.convertLocaleCode(userLanguage);
+
+    this.changeLocales(userLocale);
+    this.setState({ browserLanguage: userLocale, selectValue: userLocale });
+  };
+
+  componentDidMount() {
+    this.getBrowserLanguage();
+  }
+
+  handleChange = (e) => {
+    this.setState({ selectValue: e.target.value });
   };
   render() {
-    const { currentLanguage } = this.props;
+    const { browserLanguage, availableLanguages } = this.state;
+    // const options = availableLanguages.map((language) => {
+    //   <option value={language.locale}>{language.name}</option>;
+    // });
     return (
       <div>
         <footer>{this.props.t("description")}</footer>
-        <button onClick={() => this.changeLocales()}>
-          Change {currentLanguage}
+        <p>User's browser is using {browserLanguage}.</p>
+        <select id="languages" onChange={(e) => this.handleChange(e)}>
+          {availableLanguages.map((language) => (
+            <option key={language.locale} value={language.locale}>
+              {language.name}
+            </option>
+          ))}
+        </select>
+        <button onClick={() => this.changeLocales(this.state.selectValue)}>
+          Change language
         </button>
       </div>
     );
