@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@babel/register": "^7.9.0",
+    "@zeit/next-css": "^1.0.1",
     "express": "^4.17.1",
     "next": "^9.3.4",
     "next-i18next": "^4.2.1",

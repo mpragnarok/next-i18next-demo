@@ -62,9 +62,18 @@ class Homepage extends React.Component {
             </option>
           ))}
         </select>
-        <button onClick={() => this.changeLocales(this.state.selectValue)}>
+        <button
+          className="language-btn"
+          onClick={() => this.changeLocales(this.state.selectValue)}
+        >
           Change language
         </button>
+
+        <style jsx>{`
+          .language-btn {
+            margin-left: 20px;
+          }
+        `}</style>
       </div>
     );
   }
